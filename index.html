@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b10">
+  <meta name="description" content="Roblox gameplay systems, scripting and development portfolio.">
+  <title>YOUR NAME — Roblox Scripter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#090b10;--panel:#10141d;--panel2:#141a25;--line:#242c3a;--muted:#929bad;--text:#f2f5fa;--accent:#9cff57;--accent2:#c4ff9a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,Arial,sans-serif;line-height:1.6}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.17;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 75%);z-index:-1}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 44px));margin:auto}
+    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+    .brand{font-weight:800;letter-spacing:-.7px;font-size:17px}.brand span{color:var(--accent)}.navlinks{display:flex;gap:30px;color:#aab2c0;font-size:13px;font-weight:700}.navlinks a:hover,.textlink:hover{color:var(--accent)}
+    .status{font:11px 'DM Mono',monospace;color:var(--accent);letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:9px}.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px #9cff57}
+    .hero{padding:112px 0 96px;display:grid;grid-template-columns:1.35fr .65fr;gap:50px;align-items:center}
+    .eyebrow{font:11px 'DM Mono',monospace;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:22px}
+    h1{font-size:clamp(48px,7vw,84px);line-height:.99;letter-spacing:-5px;margin:0 0 25px;font-weight:800;max-width:760px}h1 em{font-style:normal;color:var(--accent)}
+    .intro{max-width:610px;color:#aab2c0;font-size:16px;line-height:1.9;margin:0 0 32px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border:1px solid var(--line);border-radius:6px;font-size:12px;font-weight:800;transition:.2s}.btn.primary{background:var(--accent);color:#10150c;border-color:var(--accent)}.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+    .hero-card{background:linear-gradient(145deg,#171e2a,#0e121a);border:1px solid var(--line);border-radius:10px;padding:25px;position:relative;overflow:hidden}
+    .hero-card:after{content:"";position:absolute;width:180px;height:180px;border:1px solid rgba(156,255,87,.16);border-radius:50%;right:-65px;top:-65px;box-shadow:0 0 0 22px rgba(156,255,87,.025),0 0 0 44px rgba(156,255,87,.02)}
+    .card-label{font:10px 'DM Mono',monospace;color:#7e899c;letter-spacing:1.5px;text-transform:uppercase}.hero-card h3{font-size:22px;line-height:1.3;margin:14px 0 22px;letter-spacing:-.7px}.stat{padding:13px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px}.stat span:first-child{color:#8792a4}.stat span:last-child{font-weight:800}
+    section{padding:78px 0;border-top:1px solid rgba(255,255,255,.07)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:32px}.section-kicker{font:10px 'DM Mono',monospace;color:var(--accent);letter-spacing:1.8px;text-transform:uppercase}.section-head h2{font-size:35px;letter-spacing:-1.8px;margin:8px 0 0}.section-head p{color:var(--muted);font-size:13px;max-width:360px;margin:0}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}.project{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:.25s}.project:hover{transform:translateY(-4px);border-color:#526044}
+    .preview{height:230px;background:linear-gradient(135deg,#1a2430,#111720);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.preview:before{content:"";position:absolute;width:230px;height:230px;border:1px solid rgba(156,255,87,.13);transform:rotate(35deg);box-shadow:0 0 0 35px rgba(156,255,87,.025),0 0 0 70px rgba(156,255,87,.02)}
+    .preview .play{width:54px;height:54px;border:1px solid rgba(156,255,87,.65);border-radius:50%;display:grid;place-items:center;color:var(--accent);font-size:17px;z-index:1;background:rgba(9,11,16,.55)}
+    .preview img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.project-body{padding:22px}.project-top{display:flex;justify-content:space-between;gap:12px;align-items:center}.project h3{font-size:19px;letter-spacing:-.5px;margin:0}.number{font:10px 'DM Mono',monospace;color:#657084}.project p{color:#9ba5b5;font-size:13px;line-height:1.8;margin:12px 0 17px}.tags{display:flex;gap:7px;flex-wrap:wrap}.tag{font:10px 'DM Mono',monospace;color:#b6c0ce;border:1px solid #303a4a;padding:5px 8px;border-radius:3px}
+    .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.skill{padding:19px;background:var(--panel);border:1px solid var(--line);border-radius:6px}.skill strong{display:block;font-size:13px;margin-bottom:5px}.skill small{color:var(--muted);font-size:11px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}.about-grid p{color:#aab2c0;font-size:14px;line-height:2;margin:0}.focus-list{border-top:1px solid var(--line)}.focus-item{padding:15px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px}.focus-item span:last-child{font:10px 'DM Mono',monospace;color:var(--accent)}
+    .contact{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:38px;display:flex;justify-content:space-between;align-items:center;gap:25px}.contact h2{font-size:30px;letter-spacing:-1.5px;margin:7px 0}.contact p{font-size:13px;color:var(--muted);margin:0}
+    footer{padding:28px 0;color:#6f7a8d;font:10px 'DM Mono',monospace;display:flex;justify-content:space-between;gap:20px}
+    @media(max-width:760px){.nav{height:70px}.navlinks{gap:14px;font-size:11px}.hero{padding:75px 0;grid-template-columns:1fr;gap:35px}h1{letter-spacing:-3px}.hero-card{max-width:460px}.section-head{display:block}.section-head p{margin-top:12px}.projects{grid-template-columns:1fr}.skills{grid-template-columns:repeat(2,1fr)}.about-grid{grid-template-columns:1fr;gap:25px}.contact{display:block;padding:27px}.contact .btn{margin-top:22px}footer{display:block}footer span{display:block;margin-top:8px}}
+    @media(max-width:420px){.wrap{width:calc(100% - 30px)}.navlinks{gap:10px}.navlinks a:nth-child(2){display:none}.skills{grid-template-columns:1fr 1fr}h1{font-size:48px}.hero{padding:62px 0}.section-head h2{font-size:29px}}
+  </style>
+</head>
+<body>
+  <header class="wrap nav">
+    <a class="brand" href="#">YOURNAME<span>.</span></a>
+    <nav class="navlinks"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <div>
+        <div class="status"><i class="dot"></i> Roblox scripter · Open to projects</div>
+        <div class="eyebrow" style="margin-top:25px">Gameplay systems / Luau development</div>
+        <h1>I build the<br><em>systems</em> behind<br>the game.</h1>
+        <p class="intro">I'm a Roblox scripter focused on gameplay mechanics, interactive systems and making features feel right in-game. I care about clean logic, reliable performance and the small details players notice.</p>
+        <div class="actions"><a class="btn primary" href="#work">VIEW MY WORK ↘</a><a class="btn" href="#contact">GET IN TOUCH ↗</a></div>
+      </div>
+      <aside class="hero-card">
+        <div class="card-label">CURRENT FOCUS / 01</div>
+        <h3>Gameplay that feels as good as it works.</h3>
+        <div class="stat"><span>Engine</span><span>Roblox Studio</span></div>
+        <div class="stat"><span>Language</span><span>Luau</span></div>
+        <div class="stat"><span>Main focus</span><span>Game systems</span></div>
+        <div class="stat"><span>Based in</span><span>Türkiye</span></div>
+      </aside>
+    </div>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head"><div><div class="section-kicker">Selected work / 01—04</div><h2>Things I've built.</h2></div><p>A few systems and features I've worked on. Each clip shows the feature in action.</p></div>
+        <div class="projects" id="projectGrid"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><div><div class="section-kicker">Tools & capabilities</div><h2>What I work with.</h2></div><p>The tools and areas I use to bring gameplay ideas into a working experience.</p></div>
+        <div class="skills">
+          <div class="skill"><strong>Luau</strong><small>Gameplay scripting</small></div>
+          <div class="skill"><strong>Roblox Studio</strong><small>Development workflow</small></div>
+          <div class="skill"><strong>Gameplay Systems</strong><small>Mechanics & interactions</small></div>
+          <div class="skill"><strong>UI Scripting</strong><small>Interactive interfaces</small></div>
+          <div class="skill"><strong>DataStores</strong><small>Saving & player data</small></div>
+          <div class="skill"><strong>RemoteEvents</strong><small>Client-server communication</small></div>
+          <div class="skill"><strong>Debugging</strong><small>Testing & fixing systems</small></div>
+          <div class="skill"><strong>Optimization</strong><small>Reliable game logic</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head"><div><div class="section-kicker">A little about me</div><h2>More than just scripts.</h2></div></div>
+        <div class="about-grid">
+          <p>I'm a Roblox developer who enjoys taking a gameplay idea and turning it into something people can actually play. I like solving problems, testing edge cases and making systems work smoothly together. I'm always learning and looking for projects where I can contribute, improve and build something worth playing.</p>
+          <div class="focus-list">
+            <div class="focus-item"><span>Gameplay mechanics</span><span>01</span></div>
+            <div class="focus-item"><span>Player progression & saving</span><span>02</span></div>
+            <div class="focus-item"><span>Interactive systems</span><span>03</span></div>
+            <div class="focus-item"><span>Client / server logic</span><span>04</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact"><div><div class="section-kicker">Have a project in mind?</div><h2>Let's build something solid.</h2><p>For development work, collaborations or questions, feel free to reach out.</p></div><a class="btn primary" id="contactLink" href="mailto:YOUR_EMAIL@example.com">CONTACT ME ↗</a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap"><span>© <span id="year"></span> YOUR NAME</span><span>BUILT WITH ROBLOX IN MIND · NOT WITH TEMPLATES</span></footer>
+
+  <script>
+    // Add or edit your projects here. Replace each video value with a YouTube/Vimeo embed URL.
+    // For a YouTube video, use: https://www.youtube.com/embed/VIDEO_ID
+    // For a Roblox/other video file, use a direct .mp4 URL.
+    const projects = [
+      {
+        title: "Combat System",
+        description: "A responsive combat setup with hit detection, player feedback and server-side handling.",
+        tags: ["Luau", "Combat", "RemoteEvents"],
+        video: "", // PASTE VIDEO EMBED URL HERE
+        thumbnail: "" // OPTIONAL: PASTE THUMBNAIL IMAGE URL HERE
+      },
+      {
+        title: "Player Data System",
+        description: "A player data and progression system built to keep important player information organised.",
+        tags: ["DataStore", "Saving", "Progression"],
+        video: "", // PASTE VIDEO EMBED URL HERE
+        thumbnail: ""
+      },
+      {
+        title: "Interactive Gameplay",
+        description: "Gameplay interactions designed to be clear, reliable and easy for players to understand.",
+        tags: ["Gameplay", "Interaction", "Luau"],
+        video: "", // PASTE VIDEO EMBED URL HERE
+        thumbnail: ""
+      },
+      {
+        title: "Custom UI System",
+        description: "A scripted interface with working buttons, state updates and in-game feedback.",
+        tags: ["UI", "Scripting", "Roblox Studio"],
+        video: "", // PASTE VIDEO EMBED URL HERE
+        thumbnail: ""
+      }
+    ];
+
+    const grid = document.getElementById("projectGrid");
+    projects.forEach((project, index) => {
+      const card = document.createElement("article");
+      card.className = "project";
+      const preview = document.createElement("div");
+      preview.className = "preview";
+      if (project.thumbnail) {
+        const img = document.createElement("img");
+        img.src = project.thumbnail;
+        img.alt = project.title + " preview";
+        preview.appendChild(img);
+      }
+      if (project.video) {
+        const link = document.createElement("a");
+        link.className = "play";
+        link.href = project.video;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.setAttribute("aria-label", "Watch " + project.title);
+        link.textContent = "▶";
+        preview.appendChild(link);
+      } else {
+        const marker = document.createElement("div");
+        marker.className = "play";
+        marker.textContent = "＋";
+        marker.title = "Add your video URL in the projects list";
+        preview.appendChild(marker);
+      }
+      const body = document.createElement("div");
+      body.className = "project-body";
+      const top = document.createElement("div");
+      top.className = "project-top";
+      const heading = document.createElement("h3");
+      heading.textContent = project.title;
+      const number = document.createElement("span");
+      number.className = "number";
+      number.textContent = String(index + 1).padStart(2, "0");
+      top.append(heading, number);
+      const desc = document.createElement("p");
+      desc.textContent = project.description;
+      const tags = document.createElement("div");
+      tags.className = "tags";
+      project.tags.forEach(tag => {
+        const el = document.createElement("span");
+        el.className = "tag";
+        el.textContent = tag;
+        tags.appendChild(el);
+      });
+      body.append(top, desc, tags);
+      card.append(preview, body);
+      grid.appendChild(card);
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
